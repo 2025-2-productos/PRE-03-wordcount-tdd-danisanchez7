@@ -1,7 +1,8 @@
 import subprocess
 import sys
 
-from ...wordcount import parse_args
+from ..parse_args import parse_args
+from ..read_all_lines import read_all_lines
 
 
 def test_parse_args():
@@ -19,8 +20,16 @@ def test_parse_args():
     assert output_folder == test_args[2]
 
 
-"""
+def test_read_all_lines():
+    input_folder = "data/input"
+    lines = read_all_lines(input_folder)
+    assert len(lines) > 0
+    assert any(
+        "Analytics refers to the systematic computational analysis of data" in line
+        for line in lines
+    )
 
+    """
 
 import os
 import shutil

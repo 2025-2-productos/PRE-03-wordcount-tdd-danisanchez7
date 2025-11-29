@@ -1,23 +1,12 @@
 # python3 -m homework data/input data/output
 
-import argparse
-import sys
-
-
-def parse_args():
-
-    parser = argparse.ArgumentParser(description="Count words in files")
-
-    parser.add_argument("input", type=str, help="Path to the input folder")
-    parser.add_argument("output", type=str, help="Path to the output folder")
-
-    parsed_args = parser.parse_args()
-
-    return parsed_args.input, parsed_args.output
+from homework.src._internals.parse_args import parse_args
+from homework.src._internals.read_all_lines import read_all_lines
 
 
 def main():
     input_folder, output_folder = parse_args()
+    lines = read_all_lines(input_folder)
 
     print(f"Input Path: {input_folder}")
     print(f"Output Path: {output_folder}")
